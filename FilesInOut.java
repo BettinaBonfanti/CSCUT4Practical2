@@ -4,6 +4,8 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 import java.lang.Number;
+import java.io.File;  // Import the File class
+import java.util.Scanner;  // Import the Scanner class
 
 /**
  * 
@@ -13,12 +15,14 @@ import java.lang.Number;
 public class FilesInOut {
 
     public static void main(String[] args) {
-        // Replace this with statements to set the file name (input) and file name (output).
+
+        File input = new File("Macintosh HD\u2069 ▸ \u2068Users\u2069 ▸ \u2068bettina\u2069 ▸ \u2068IdeaProjects\u2069 ▸ \u2068CSCUT4Practical2\u2069"); // Specify the filename (input)
+        File input = new File("formatted.txt");// Specify the filename (output).
         // Initially it will be easier to hardcode suitable file names.
 
-        // Set up a new Scanner to read the input file.
-        // Processing line by line would be sensible here.
-        // Initially, echo the text to System.out to check you are reading correctly.
+        Scanner in = new Scanner(System.in); // Set up a new Scanner to read the input file.
+        String line = myObj.nextLine();// Processing line by line would be sensible here.
+        System.out.print(line);// Initially, echo the text to System.out to check you are reading correctly.
         // Then add code to modify the text to the output format.
 
         // Set up a new PrintWriter to write the output file.
