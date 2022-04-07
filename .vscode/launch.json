@@ -4,13 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        {
-            "type": "java",
-            //"name": "Launch with Arguments Prompt",
-            "request": "launch",
-            "mainClass": "",
-            "vmArgs": ["input.txt", "formatted.txt"]
-        },
+    
         {
             "type": "java",
             "name": "Launch Current File",
@@ -22,7 +16,8 @@
             "name": "Launch FilesInOut",
             "request": "launch",
             "mainClass": "FilesInOut",
-            "projectName": "CSCUT4Practical2_5ad5fa48"
+            "projectName": "CSCUT4Practical2_5ad5fa48",
+            "args": [" u", "input.txt", "formatted.txt"]
         }
     ]
 }

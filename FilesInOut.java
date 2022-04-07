@@ -13,16 +13,19 @@ public class FilesInOut {
 
     public static void main(String[] args) {
         File input;
+        PrintWriter writer;
         boolean allCaps;
-        if (args.equals(" u")){
-            allCaps = true;
-        }
-        else{
-            allCaps = false;
-        }
         try {
-            PrintWriter writer = new PrintWriter(args[1]);
-            input = new File(args[0]);// Specify the filename (input).
+            if (args[0].equalsIgnoreCase(" u")){
+                allCaps = true;
+                writer = new PrintWriter(args[2]);//create a writer to a new file named "formatted.txt"
+                input = new File(args[1]);// create a new the filename from input.txt
+            }
+            else{
+                allCaps = false;
+                writer = new PrintWriter(args[1]);//create a writer to a new file named "formatted.txt"
+                input = new File(args[0]);// create a new the filename from input.txt
+            }
             Scanner reader = new Scanner(input);// Set up a new Scanner to read the input file.
             while (reader.hasNextLine()) {
                 String line = reader.nextLine();// Processing input file line by line.
