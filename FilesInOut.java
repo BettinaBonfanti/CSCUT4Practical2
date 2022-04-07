@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.lang.Number;
 import java.io.File;  // Import the File class
 import java.util.Scanner;  // Import the Scanner class
+import java.io.FileNotFoundException;  // Import this class to handle errors
 
 /**
  * 
@@ -15,24 +16,46 @@ import java.util.Scanner;  // Import the Scanner class
 public class FilesInOut {
 
     public static void main(String[] args) {
+        File input;
+        try {
+            PrintWriter writer = new PrintWriter("formatted.txt");
+            input = new File("input.txt");// Specify the filename (input).
+            Scanner reader = new Scanner(input);// Set up a new Scanner to read the input file.
+            while (reader.hasNextLine()) {
+                String line = reader.nextLine();// Processing input file line by line.
+                String delim=" "; //Setting white space as delimiter for split function
 
-        File input = new File("Macintosh HD\u2069 ▸ \u2068Users\u2069 ▸ \u2068bettina\u2069 ▸ \u2068IdeaProjects\u2069 ▸ \u2068CSCUT4Practical2\u2069"); // Specify the filename (input)
-        File input = new File("formatted.txt");// Specify the filename (output).
-        // Initially it will be easier to hardcode suitable file names.
+                System.out.println(line);
+                String [] tokens = line.split(delim); //create an array of separate entries in each line
+                    for (int t=0; t<tokens.length; t++) {
+                        if (t == 0 || t == 1){
+                            tokens[t] = formatString(tokens[t], false);
+                        }
+                        else {
+                            tokens[t]= tokens[t].substring(0,2) + "/" + tokens[t].substring(2,4) + "/" + tokens[t].substring(4);
+                        }
+                    }
+                String outputLine="";
+                outputLine = outputLine.concat(tokens[0] + "\t" + tokens[1] + "\t" + tokens[2]);
+                writer.println(outputLine);
+            }
+            writer.close();
+            reader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred."); //handle exception if an error occurs
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        
-        String line = myObj.nextLine();// Processing line by line would be sensible here.
-        System.out.print(line);// Initially, echo the text to System.out to check you are reading correctly.
-        // Then add code to modify the text to the output format.
+}// main
+public String formatString(String inputString, boolean isAllCaps){
+    if (isAllCaps){
+        return inputString.toUpperCase();
+    }
+    else{
+        return inputString.substring(0,1).toUpperCase() + inputString.substring(1);
+    }
+}
 
-        // Set up a new PrintWriter to write the output file.
-        // Add suitable code into the above processing (because you need to do this line by line also.
-        // That is, read a line, write a line, loop.
-
-        // Finally, add code to read the filenames as arguments from the command line.
-
-        System.out.println("You need to add your own code to do anything");
-
-    } // main
-
-} // FilesInOut
+}// FilesInOut
