@@ -20,7 +20,7 @@ public class FilesInOut {
         File input = new File("formatted.txt");// Specify the filename (output).
         // Initially it will be easier to hardcode suitable file names.
 
-        Scanner in = new Scanner(System.in); // Set up a new Scanner to read the input file.
+        
         String line = myObj.nextLine();// Processing line by line would be sensible here.
         System.out.print(line);// Initially, echo the text to System.out to check you are reading correctly.
         // Then add code to modify the text to the output format.
