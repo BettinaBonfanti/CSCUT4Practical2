@@ -17,7 +17,7 @@
             "request": "launch",
             "mainClass": "FilesInOut",
             "projectName": "CSCUT4Practical2_5ad5fa48",
-            "args": [" u", "input.txt", "formatted.txt"]
+            "args": ["inputm.txt", "formattedm.txt"]
         }
     ]
 }

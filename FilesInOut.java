@@ -34,15 +34,33 @@ public class FilesInOut {
                 System.out.println(line);
                 String [] tokens = line.split(delim); //create an array of separate entries in each line
                     for (int t=0; t<tokens.length; t++) {
-                        if (t == 0 || t == 1){
-                            tokens[t] = formatString(tokens[t], allCaps);
+                        if (tokens.length==3){
+                            if (t == 0 || t == 1){
+                                tokens[t] = formatString(tokens[t], allCaps);
+                            }
+                            else {
+                                tokens[t]= tokens[t].substring(0,2) + "/" + tokens[t].substring(2,4) + "/" + tokens[t].substring(4);
+                            }
                         }
-                        else {
-                            tokens[t]= tokens[t].substring(0,2) + "/" + tokens[t].substring(2,4) + "/" + tokens[t].substring(4);
+                        else if (tokens.length==4) {
+                            if (t == 0 || t == 2){
+                                tokens[t] = formatString(tokens[t], allCaps);
+                            }
+                            else if (t == 1){
+                                tokens[t] = tokens[t].toUpperCase() + ".";
+                            }
+                            else {
+                                tokens[t]= tokens[t].substring(0,2) + "/" + tokens[t].substring(2,4) + "/" + tokens[t].substring(4);
+                            }
                         }
                     }
                 String outputLine="";
-                outputLine = outputLine.concat(tokens[0] + "\t" + tokens[1] + "\t" + tokens[2]);
+                if (tokens.length==3){
+                    outputLine = outputLine.concat(tokens[0] + "\t\t" + tokens[1] + "\t" + tokens[2]);
+                }
+                else if (tokens.length==4){
+                    outputLine = outputLine.concat(tokens[0] + "\t" + tokens[1] + "\t" + tokens[2] + "\t" + tokens[3]);
+                }
                 writer.println(outputLine);
             }
             writer.close();
